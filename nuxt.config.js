@@ -34,6 +34,7 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    "@nuxtjs/apollo",
     [
       "@nuxtjs/firebase",
       {
@@ -66,6 +67,15 @@ export default {
       },
     ],
   ],
+
+  //Apollo GQL Client
+  apollo: {
+    clientConfigs: {
+      default: {
+        httpEndpoint: 'http://localhost:4000/graphql',
+      },
+    },
+  },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
