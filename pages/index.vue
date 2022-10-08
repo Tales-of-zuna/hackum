@@ -9,14 +9,15 @@
       <v-carousel-item src="https://i.imgur.com/VTPmZCQ.png"></v-carousel-item>
     </v-carousel>
     <v-row>
-      <v-col cols="12" md="4"
-        ><v-card>
+      <v-col cols="12" md="4" v-for="member in getMembers">
+        <v-card>
           <v-img
             height="200"
             src="https://scontent.fuln6-2.fna.fbcdn.net/v/t1.6435-9/55837866_364808054245206_4657962792098201600_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=174925&_nc_ohc=jTfRAQ_PSkQAX9Ud4Ft&_nc_ht=scontent.fuln6-2.fna&oh=00_AT9sk0OI5TXeT3NoS2ulpCPqrmoEWl4IyOmugV_v74xAwA&oe=63652A63"
           ></v-img>
-          <v-card-title class="d-flex justify-center" primary-title>
-            Тунгалаггэгээ
+          
+          <v-card-title class="d-flex justify-center apollo" primary-title>
+            {{member.name}}
           </v-card-title>
           <v-divider class="mx-4"></v-divider>
           <v-card-subtitle class="text-center"
@@ -27,14 +28,13 @@
           >
 
           <v-card class="overflow-y-auto" height="150">
-            <v-btn color="green" class="font-weight-bold" rounded text
-              >хуур грүпп</v-btn
-            >
+            <v-card-actions class="d-flex justify-center">
+              <v-btn color="green" class="font-weight-bold" rounded text v-for="work in member.workPlaces"
+                >{{work}}</v-btn
+              >
+            </v-card-actions>
             <v-card-text>
-              UI/UX figma дээр жоохоон л Веб - C, C++ - html, css, javascript -
-              react - nodejs - express - mongo/mysql - typing - бие дааж сурах
-              зөвлөгөө өгөх (source-ууд) - мотивацжуулах - англи хэл - чадвар
-              дээрээ суурилан хичээл заах
+              {{member.description}}
             </v-card-text></v-card
           >
           <v-expansion-panels>
@@ -87,198 +87,8 @@
           </v-expansion-panels>
         </v-card></v-col
       >
-
-      <v-col cols="12" md="4"
-        ><v-card>
-          <v-img
-            height="200"
-            src="https://scontent.fuln1-2.fna.fbcdn.net/v/t1.15752-9/310651589_508066374112800_2998084115278521601_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=ae9488&_nc_ohc=BI0FN16xvfIAX8Kai4K&_nc_ht=scontent.fuln1-2.fna&oh=03_AVKvdhfXv0GsXuSnt84xtZMvRG-kjIPyvk-r5dA2Y2eBAQ&oe=6366487B"
-          ></v-img>
-          <v-card-title class="d-flex justify-center" primary-title>
-            Зуунбилэг
-          </v-card-title>
-          <v-divider class="mx-4"></v-divider>
-          <v-card-subtitle class="text-center"
-            >Core member
-            <v-icon color="green "
-              >mdi-card-account-details-outline</v-icon
-            ></v-card-subtitle
-          >
-          <v-card class="overflow-y-auto" height="150">
-            <v-card-actions class="d-flex justify-center">
-              <v-btn color="green" class="font-weight-bold" rounded text
-                >Golomt bank</v-btn
-              >
-              <v-btn color="green" class="font-weight-bold" rounded text
-                >Shoppy.mn</v-btn
-              >
-            </v-card-actions>
-            <v-card-actions class="d-flex justify-center">
-              <v-btn color="green" class="font-weight-bold" rounded text
-                >Smartstore.mn</v-btn
-              >
-              <v-btn color="green" class="font-weight-bold" rounded text
-                >Xiaomi.mn</v-btn
-              >
-            </v-card-actions>
-
-            <v-card-text class="text-center">
-              Frontend (Vuejs, Nuxtjs, Vuetify, Tailwind) <br />
-              + <br />
-              Backend (Google firebase, MongoDB, ExpressJS, Django, AWS) <br />
-              = <br />
-              Fullstack <br />
-              <div class="font-weight-bold white--text d-flex justify-center">
-                Асуугаад үзвэл мэдэж л байна...
-              </div>
-            </v-card-text>
-            <div class="d-flex justify-center">
-              <v-btn color="success" text @click="bobo = !bobo">...</v-btn>
-            </div>
-            <v-snackbar v-model="bobo">
-              Заа уучлаарай жаахан залхуурсан болно.
-
-              <template v-slot:action="{ attrs }">
-                <v-btn color="pink" text v-bind="attrs" @click="bobo = !bobo">
-                  Аан за
-                </v-btn>
-              </template>
-            </v-snackbar>
-          </v-card>
-          <v-expansion-panels>
-            <v-expansion-panel elevation="0">
-              <v-expansion-panel-header class="green--text"
-                ><div>
-                  Багийн гишүүд
-                  <v-icon color="green "
-                    >mdi-card-account-details-outline</v-icon
-                  >
-                </div>
-              </v-expansion-panel-header>
-              <v-expansion-panel-content
-                ><v-form>
-                  <v-text-field
-                    clearable
-                    label="Таны нэр"
-                    single-line
-                    color="green"
-                  ></v-text-field>
-                  <v-text-field
-                    clearable
-                    label="Таны утасны дугаар"
-                    single-line
-                    color="green"
-                  ></v-text-field>
-                </v-form>
-                <div v-if="!sanal" class="d-flex justify-center pa-10">
-                  <v-btn color="green" @click="(sanal = !sanal), (helo = !helo)"
-                    >Багт нэгдэх</v-btn
-                  >
-                </div>
-              </v-expansion-panel-content>
-
-              <v-snackbar v-model="helo">
-                {{ text }} <v-icon color="green">mdi-account-check</v-icon>
-
-                <template v-slot:action="{ attrs }">
-                  <v-btn color="pink" text v-bind="attrs" @click="helo = !helo">
-                    Cool
-                  </v-btn>
-                </template>
-              </v-snackbar>
-              <div v-if="sanal" class="d-flex justify-center">
-                <v-card-title primary-title color="green">
-                  Та санал өгсөн байна <v-icon>mdi-check-decagram</v-icon>
-                </v-card-title>
-              </div>
-            </v-expansion-panel>
-          </v-expansion-panels>
-        </v-card></v-col
-      >
-
-      <v-col cols="12" md="4"
-        ><v-card>
-          <v-img
-            height="200"
-            src="https://scontent.fuln1-2.fna.fbcdn.net/v/t39.30808-6/283154137_1896921630505727_13492333463629676_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=Ry6zMvw67DsAX9HdjTt&_nc_ht=scontent.fuln1-2.fna&oh=00_AT_vWSTAQg30IN7Y7WAiwan0zKOUNXikRndYx-J9YtXZoQ&oe=6343A831"
-          ></v-img>
-          <v-card-title class="d-flex justify-center" primary-title>
-            Цэнгүүн
-          </v-card-title>
-          <v-divider class="mx-4"></v-divider>
-          <v-card-subtitle class="text-center"
-            >Core member
-            <v-icon color="green "
-              >mdi-card-account-details-outline</v-icon
-            ></v-card-subtitle
-          >
-          <v-card class="overflow-y-auto" height="150">
-            <v-card-text>
-              Веб <br />
-              - C, C++ <br />
-              - html, css, javascript <br />
-              - react <br />
-              - nodejs <br />
-              - express <br />
-              - mongo/mysql<br />
-              - typing <br />
-              - бие дааж сурах зөвлөгөө өгөх (source-ууд) <br />
-              - мотивацжуулах <br />
-              - англи хэл <br />
-              - чадвар дээрээ суурилан хичээл заах <br />
-            </v-card-text>
-          </v-card>
-          <v-expansion-panels>
-            <v-expansion-panel elevation="0">
-              <v-expansion-panel-header class="green--text"
-                ><div>
-                  Багийн гишүүд
-                  <v-icon color="green "
-                    >mdi-card-account-details-outline</v-icon
-                  >
-                </div>
-              </v-expansion-panel-header>
-              <v-expansion-panel-content
-                ><v-form>
-                  <v-text-field
-                    clearable
-                    label="Таны нэр"
-                    single-line
-                    color="green"
-                  ></v-text-field>
-                  <v-text-field
-                    clearable
-                    label="Таны утасны дугаар"
-                    single-line
-                    color="green"
-                  ></v-text-field>
-                </v-form>
-                <div v-if="!sanal" class="d-flex justify-center pa-10">
-                  <v-btn color="green" @click="(sanal = !sanal), (helo = !helo)"
-                    >Багт нэгдэх</v-btn
-                  >
-                </div>
-              </v-expansion-panel-content>
-
-              <v-snackbar v-model="helo">
-                {{ text }} <v-icon color="green">mdi-account-check</v-icon>
-
-                <template v-slot:action="{ attrs }">
-                  <v-btn color="pink" text v-bind="attrs" @click="helo = !helo">
-                    Cool
-                  </v-btn>
-                </template>
-              </v-snackbar>
-              <div v-if="sanal" class="d-flex justify-center">
-                <v-card-title primary-title color="green">
-                  Та санал өгсөн байна <v-icon>mdi-check-decagram</v-icon>
-                </v-card-title>
-              </div>
-            </v-expansion-panel>
-          </v-expansion-panels>
-        </v-card></v-col
-      >
     </v-row>
+    
     <v-row>
       <v-col cols="12" md="4"
         ><v-card>
@@ -1176,9 +986,21 @@
 <script>
 // import { getDatabase, ref, onValue } from "firebase/database";
 import Membercard from "../components/membercard.vue";
+import gql from "graphql-tag";
 export default {
   components: { Membercard },
-  data() {
+  apollo: {
+    getMembers: gql`
+      query getMembers{
+        getMembers{
+          _id
+          name
+          description
+          workPlaces
+        }
+      }`
+  },
+  data(){
     return {
       sanal: false,
       helo: false,
@@ -1199,16 +1021,7 @@ export default {
       Zuna: "pmWcQzNHXbmvJobZshHG",
       yvuul: null,
       bobo: false,
-    };
-  },
-  // methods: {
-  //   writeUserData(core) {
-  //     console.log("aaa");
-  //     console.log(this.$fire.database);
-  //     this.$fire.firestore.addDoc("kids/5OJnx6A1jsiMSCUTumk4/", {
-  //       age: "Last",
-  //     });
-  //   },
-  // },
+    }
+  } 
 };
 </script>
