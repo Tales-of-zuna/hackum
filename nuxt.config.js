@@ -33,39 +33,7 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [
-    [
-      "@nuxtjs/firebase",
-      {
-        config: {
-          apiKey: "AIzaSyDxzYVhPXXKPt8x2yv2N1C7ZKbMCsrB-Ew",
-
-          authDomain: "hackumpolly.firebaseapp.com",
-
-          projectId: "hackumpolly",
-
-          storageBucket: "hackumpolly.appspot.com",
-
-          messagingSenderId: "77956411054",
-
-          appId: "1:77956411054:web:df2ed3e404fd2d1e1a873f",
-
-          measurementId: "G-44QXM1XR6M",
-        },
-        services: {
-          auth: true,
-          firestore: true,
-          functions: true,
-          storage: true,
-          database: true,
-          messaging: true,
-          performance: true,
-          analytics: true,
-          remoteConfig: true,
-        },
-      },
-    ],
-  ],
+  modules: [],
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
