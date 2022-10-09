@@ -15,9 +15,9 @@
             height="200"
             src="https://scontent.fuln6-2.fna.fbcdn.net/v/t1.6435-9/55837866_364808054245206_4657962792098201600_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=174925&_nc_ohc=jTfRAQ_PSkQAX9Ud4Ft&_nc_ht=scontent.fuln6-2.fna&oh=00_AT9sk0OI5TXeT3NoS2ulpCPqrmoEWl4IyOmugV_v74xAwA&oe=63652A63"
           ></v-img>
-          
+
           <v-card-title class="d-flex justify-center apollo" primary-title>
-            {{member.name}}
+            {{ member.name }}
           </v-card-title>
           <v-divider class="mx-4"></v-divider>
           <v-card-subtitle class="text-center"
@@ -29,12 +29,18 @@
 
           <v-card class="overflow-y-auto" height="150">
             <v-card-actions class="d-flex justify-center">
-              <v-btn color="green" class="font-weight-bold" rounded text v-for="work in member.workPlaces"
-                >{{work}}</v-btn
+              <v-btn
+                color="green"
+                class="font-weight-bold"
+                rounded
+                text
+                :key="work"
+                v-for="work in member.workPlaces"
+                >{{ work }}</v-btn
               >
             </v-card-actions>
             <v-card-text>
-              {{member.description}}
+              {{ member.description }}
             </v-card-text></v-card
           >
           <v-expansion-panels>
@@ -88,7 +94,7 @@
         </v-card></v-col
       >
     </v-row>
-    
+
     <v-row>
       <v-col cols="12" md="4"
         ><v-card>
@@ -991,16 +997,17 @@ export default {
   components: { Membercard },
   apollo: {
     getMembers: gql`
-      query getMembers{
-        getMembers{
+      query getMembers {
+        getMembers {
           _id
           name
           description
           workPlaces
         }
-      }`
+      }
+    `,
   },
-  data(){
+  data() {
     return {
       sanal: false,
       helo: false,
@@ -1021,7 +1028,7 @@ export default {
       Zuna: "pmWcQzNHXbmvJobZshHG",
       yvuul: null,
       bobo: false,
-    }
-  } 
+    };
+  },
 };
 </script>
